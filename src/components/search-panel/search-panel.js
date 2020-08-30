@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './search-panel.css'
 
-const SearchPanel = () =>{
-    const searchText= 'enter search text'
+export default class SearchPanel extends Component{
+  render(){
+    const searchText = 'enter search text';
 
-    return <input className='form-control search-input'
-    placeholder={searchText} 
-    />
-  } 
-export default SearchPanel;
+    return (
+      <input className = 'form-control search-input'  placeholder={searchText}    />
+    )
+  }
+}
+// const SearchPanel = () =>{
+//     
+//   } 
+// export default SearchPanel;
