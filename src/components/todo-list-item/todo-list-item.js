@@ -14,30 +14,30 @@ export default class TodoListItem extends Component{
     //          console.log(`Done: ${this.props.label}`)
     //     }
     // }
-    state = {
-        done:false,
-        important:false,
-    }
-    onLabelClick = () => {
-      this.setState(({ done })=>{
-          return {
-                done:!done
-          }
-      })
-    }
-    onMarkInportant = () =>{
-        this.setState(({ important })=>{
-            return {
-                important:!important
-            }
-        })
-    }
+    // state = {
+    //     done:false,
+    //     important:false,
+    // }
+    // onLabelClick = () => {
+    //   this.setState(({ done })=>{
+    //       return {
+    //             done:!done
+    //       }
+    //   })
+    // }
+    // onMarkInportant = () =>{
+    //     this.setState(({ important })=>{
+    //         return {
+    //             important:!important
+    //         }
+    //     })
+    // }
 
     render(){
         // const {label,important} = this.props;
         let classNames = 'todo-list-item ';
-        const {label,onDeleted} = this.props;
-        const{done,important} = this.state;
+        const {label,onDeleted,onToggleDone,onToggleImportant,done,important} = this.props;
+        // const{done,important} = this.state;
         if(done){
             classNames +='done '
         }
@@ -50,9 +50,9 @@ export default class TodoListItem extends Component{
         // }
         return (
             <span className={classNames}>
-                <span  className = 'todo-list-item-label' onClick = {this.onLabelClick}>{label}</span>
+                <span  className = 'todo-list-item-label' onClick = {onToggleDone}>{label}</span>
                 <span>
-                        <button className='float-right btn btn-outline-danger btn-sm' onClick = {this.onMarkInportant}><FontAwesomeIcon icon={faExclamation} />     </button>
+                        <button className='float-right btn btn-outline-danger btn-sm' onClick = {onToggleImportant}><FontAwesomeIcon icon={faExclamation} />     </button>
                         <button className='float-right btn btn-outline-success btn-sm' onClick = {onDeleted}><FontAwesomeIcon icon={faTrash} />     </button>
                 </span>
             </span>

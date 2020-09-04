@@ -8,7 +8,10 @@ export default class TodoList extends Component{
     const elements = this.props.todos.map((item) => {
       return(
         <li key = {item.id} className='list-group-item'>
-          <TodoListItem {...item} onDeleted = {() => this.props.onDeleted(item.id)}/>
+          <TodoListItem {...item} 
+          onDeleted = {() => this.props.onDeleted(item.id)} 
+          onToggleDone = {() => this.props.onToggleDone(item.id)}
+          onToggleImportant = {() => this.props.onToggleImportant(item.id)}/>
         </li>
       )
     });
@@ -20,7 +23,8 @@ export default class TodoList extends Component{
     )
   }
 }
-// const TodoList = ({todos,onDeleted}) =>{
+
+// const TodoList = ({todos,onDeleted,onToggleDone,onToggleImportant}) =>{
 //   const elements = todos.map((item) => {
 //     return(
 //       <li key = {item.id} className='list-group-item'>
