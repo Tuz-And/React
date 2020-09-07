@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 
 import TodoList from '../todo-list';
 import AppHeader from '../app-header';
@@ -22,13 +22,13 @@ export default class App extends Component{
         // {label: "Drink Tea", important:false, id:3},
     ],
     term:'',
-    filter:'done'//active,done,all  
+    filter:'all'//active,done,all  
   }
   createTodoItem(label){
     return {
       label,
       important:false, 
-      done:true,
+      done:false,
       id:this.maxId++,
     }
   }
@@ -117,12 +117,12 @@ export default class App extends Component{
     }
   }
  render(){
-    const {todoData,term,filter} = this.state;
-    const visibleItems = this.filter(this.search(todoData,term),filter)
+    const {todoList,term,filter} = this.state;
+    const visibleItems = this.filter(this.search(todoList,term),filter)
 
-    const doneCount = todoData.filter((el) => el.done).length;
+    const doneCount = todoList.filter((el) => el.done).length;
    
-    const todoCount = todoData.length - doneCount;
+    const todoCount = todoList.length - doneCount;
     
     return(
         <div className='todo-app'>
